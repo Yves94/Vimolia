@@ -1,1 +1,1 @@
-Test du Hooks 6
+Test du Hooks 7
