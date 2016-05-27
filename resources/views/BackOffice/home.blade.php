@@ -13,7 +13,7 @@
 					<div class="panel-heading">Home</div>
 
 					<div class="panel-body">
-					 {{ $user->userable->pays }}
+
 					</div>
 				</div>
 			</div>

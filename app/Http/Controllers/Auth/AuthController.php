@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\PublicUser;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -63,10 +64,17 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        $public_user = new PublicUser();
+        $public_user->save();
+
+        $user = new User();
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = bcrypt($data['password']);
+        $user->userable_type = 'App\PublicUser';
+        $user->userable_id = $public_user->id;
+        $user->save();
+
+        return $user;
     }
 }

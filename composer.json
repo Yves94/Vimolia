@@ -8,10 +8,12 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "acacha/admin-lte-template-laravel": "2.*",
-        "barryvdh/laravel-debugbar": "^2.2"
+        "barryvdh/laravel-debugbar": "^2.2",
+        "zizaco/entrust": "^1.7",
+        "laravelcollective/html": "^5.2",
+        "fzaninotto/faker": "^1.6"
     },
     "require-dev": {
-        "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*|3.0.*",
@@ -22,7 +24,8 @@
             "database"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Laraveltable\\Table\\": "packages/laraveltable/table/src"
         }
     },
     "autoload-dev": {

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExpertTable extends Migration
+class CreateTablePublicUser extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,9 @@ class CreateExpertTable extends Migration
      */
     public function up()
     {
-        
-        Schema::create('experts', function (Blueprint $table) {
+        Schema::create('public_users',function (Blueprint $table) {
             $table->increments('id');
-            $table->string('pays');
+            $table->date('birthday');
         });
     }
 
@@ -26,6 +25,6 @@ class CreateExpertTable extends Migration
      */
     public function down()
     {
-        Schema::drop('experts');
+        Schema::drop('public_users');
     }
 }
