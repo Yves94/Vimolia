@@ -29,6 +29,11 @@ function pageChange() {
         params.page = page;
         window.location.href = currentUrlWithoutParams + generateGetParams(params);
     });
+    $('#reset-search-button').on('click',function(){
+        var params = getparams();
+        delete params.search;
+        window.location.href = currentUrlWithoutParams + generateGetParams(params);
+    });
 }
 
 /**
@@ -58,30 +63,19 @@ function sortChange() {
 
     });
 }
-/**
- * recupere dans le GET le parametre preciser
- */
-$.urlParam = function (name) {
-    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-    if (results == null) {
-        return null;
-    }
-    else {
-        return results[1] || 0;
-    }
-};
 
 /**
  * recupere nos parametres de config
  */
 
 function getparams() {
-    return {
-        page: $.urlParam('page'),
-        orderby: $.urlParam('orderby'),
-        direction: $.urlParam('direction'),
-        search: $.urlParam('search')
-    };
+    var query = location.search.substr(1);
+    var result = {};
+    query.split("&").forEach(function(part) {
+        var item = part.split("=");
+        result[item[0]] = decodeURIComponent(item[1]);
+    });
+    return result;
 }
 
 /**
@@ -96,4 +90,6 @@ function generateGetParams(array) {
     });
     return paramsString.slice(0,-1)
 }
+
+
 

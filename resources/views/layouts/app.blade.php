@@ -6,10 +6,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html lang="en">
 
 @section('htmlheader')
-    @include('layouts.partials.htmlheader')
+@include('layouts.partials.htmlheader')
 @show
 
-<!--
+        <!--
 BODY TAG OPTIONS:
 =================
 Apply one or more of the following classes to get the
@@ -36,16 +36,25 @@ desired effect
 
     @include('layouts.partials.sidebar')
 
-    <!-- Content Wrapper. Contains page content -->
+            <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
 
         @include('layouts.partials.contentheader')
-
-        <!-- Main content -->
-        <section class="content">
-            <!-- Your Page Content Here -->
-            @yield('main-content')
-        </section><!-- /.content -->
+                <!-- errors-->
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+                    <!-- Main content -->
+            <section class="content">
+                <!-- Your Page Content Here -->
+                @yield('main-content')
+            </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
 
     @include('layouts.partials.controlsidebar')

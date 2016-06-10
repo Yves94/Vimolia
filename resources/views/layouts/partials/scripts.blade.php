@@ -8,6 +8,17 @@
 <script src="{{ asset('/js/app.min.js') }}" type="text/javascript"></script>
 
 <script src="{{ asset('/vendor/laraveltable/js/laraveltable-sortable.js')}}"></script>
+
+<script src="{{ asset('/js/bootstrap-datetimepicker.js')}}"></script>
+<script>
+    $(document).ready(function() {
+        $('.datepicker').datetimepicker({
+            locale: 'fr',
+            //format: 'd/MM/YYYY'
+            format: 'L'
+        });
+    });
+</script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the
       user experience. Slimscroll is required when using the

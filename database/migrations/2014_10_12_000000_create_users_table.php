@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->string('phone');
-            $table->integer('discover_method');
+            $table->integer('discover_method_id');
             $table->rememberToken();
             $table->timestamps();
             $table->integer('userable_id');
