@@ -9,7 +9,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
     <meta name="description" content="Pratt - Free Bootstrap 3 Theme">
     <meta name="author" content="Alvarez.is - BlackTie.co">
 
-    <title>Acacha AdminLTE Laravel package template Landing page - Using Pratt</title>
+    <title>D2M - @yield('htmlheader_title', 'Your title here') </title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet">
@@ -41,12 +41,13 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="" class="smoothScroll">Home</a></li>
+                <li @if (Request::is('/')) class="active" @endif><a href="/">Accueil</a></li>
+                <li @if (Request::is('comment')) class="active" @endif><a href="comment">Commentaire</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">Login</a></li>
-                    <li><a href="{{ url('/register') }}">Register</a></li>
+                    <li><a href="{{ url('/login') }}">Se connecté</a></li>
+                    <li><a href="{{ url('/register') }}">S'inscrire</a></li>
                 @else
                     <li><a href="/home">{{ Auth::user()->name }}</a></li>
                 @endif
@@ -54,6 +55,10 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         </div><!--/.nav-collapse -->
     </div>
 </div>
+
+<section class="content" style="margin: 80px 50px 0 50px;">
+    @yield('main-content')
+</section>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
