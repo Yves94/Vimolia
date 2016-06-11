@@ -25,8 +25,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-
-
         DB::table('users')->insert([
             'civility' => 'M',
             'name' => 'Danguiral',
@@ -35,6 +33,19 @@ class UsersTableSeeder extends Seeder
             'discover_method_id' => 1,
             'email' => 'florent.danguiral@gmail.com',
             'password' => bcrypt('florent'),
+            'enable' => true,
+            'userable_type' => 'App\PublicUser',
+            'userable_type_readable' => 'publique',
+        ]);
+
+        DB::table('users')->insert([
+            'civility' => 'M',
+            'name' => 'Legris',
+            'firstname' => 'Yves',
+            'phone' => '06',
+            'discover_method_id' => 1,
+            'email' => 'ylegris94@gmail.com',
+            'password' => bcrypt('azerty'),
             'enable' => true,
             'userable_type' => 'App\PublicUser',
             'userable_type_readable' => 'publique',
