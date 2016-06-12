@@ -2,3 +2,20 @@
 .sortable:hover {
     background-color: #00a7d0;
 }
+
+/* Comment Page */
+#commentTable table th:last-child {
+    display: none;
+}
+
+#commentTable tr {
+    cursor: pointer;
+}
+
+/* Conversation Page */
+.boxComment {
+    background-color: #eee;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 5px;
+}

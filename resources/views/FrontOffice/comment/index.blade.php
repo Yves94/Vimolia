@@ -1,31 +1,47 @@
 @extends('layouts.landing')
 @section('htmlheader_title')
-    Commentaires
+    Commentaires - Liste
 @stop
 
 @section('main-content')
 
-    @if (isset($response))
-        <div class="alert alert-success alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h4><i class="glyphicon glyphicon-ok"></i> Information</h4>
-            Votre message à été envoyé avec succès.
-        </div>
-    @endif
+    <h3>Lites des questions publique</h3>
 
-    <h3>Poser une question</h3>
+    <br>
 
-    {{ Form::open(array('url' => 'comment')) }}
-        <div class="form-group">
-            {{ Form::label('subject', 'Sujet') }}
-            {{ Form::text('subject', old('subject'), ["class" => "form-control", "required" => true]) }}
+    <div class="row">
+        <div class="col-xs-2">
+            <h4>Filtrer par</h4>
         </div>
-        <div class="form-group">
-            {{ Form::label('message', 'Message') }}
-            {{ Form::textarea('message', old('message'), ["class" => "form-control", "rows" => 3, "required" => true]) }}
+        <div class="col-xs-4">
+            <select class="form-control">
+                
+            </select>
         </div>
+        <div class="col-xs-6">
+            <a href="{{ url('/comment/question') }}">
+                <button class="btn btn-default pull-right">Poser une question</button>
+            </a>
+        </div>
+    </div>
 
-        {{ Form::submit('Envoyer', ["class" => "btn btn-default"])  }}
-    {{ Form::close() }}
+    <br>
+
+    <div id="commentTable">
+        {!! $table->getHtmlTable() !!}
+    </div>
+
+    <script type="text/javascript">
+            
+        $(function() {
+            // Lors d'un click sur une ligne du tableau des questions
+            $('tr').click(function() {
+                $data = $(this).find('th').last().html();
+                $uri = $data.split(';');
+                window.location.href = '/question/' + $uri[0] + '/' + $uri[1];
+            });
+        });
+
+    </script>
 
 @stop

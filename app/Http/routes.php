@@ -10,7 +10,10 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     Route::get('/comment', 'FrontOffice\CommentController@index');
-    Route::post('/comment', 'FrontOffice\CommentController@saveQuestion');
+    Route::get('/comment/question', 'FrontOffice\CommentController@question');
+    Route::post('/comment/question', 'FrontOffice\CommentController@saveQuestion');
+
+    Route::get('/question/{id}/{comment?}', 'FrontOffice\CommentController@showConversation');
 });
 
 // BackOffice

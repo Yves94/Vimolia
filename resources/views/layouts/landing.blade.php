@@ -42,11 +42,11 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li @if (Request::is('/')) class="active" @endif><a href="/">Accueil</a></li>
-                <li @if (Request::is('comment')) class="active" @endif><a href="comment">Commentaire</a></li>
+                <li @if (Request::is('comment')) class="active" @endif><a href="/comment">Commentaire</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">Se connecté</a></li>
+                    <li><a href="{{ url('/login') }}">Se connecter</a></li>
                     <li><a href="{{ url('/register') }}">S'inscrire</a></li>
                 @else
                     <li><a href="/home">{{ Auth::user()->name }}</a></li>
@@ -56,7 +56,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
     </div>
 </div>
 
-<section class="content" style="margin: 80px 50px 0 50px;">
+<section class="container" style="margin-top: 60px;">
     @yield('main-content')
 </section>
 
